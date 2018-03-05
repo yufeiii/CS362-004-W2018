@@ -1,0 +1,34 @@
+Unitest for getCost
+	 curse card pass
+	 cutpurse card pass
+	 sea_hag card pass
+	 smithy card pass
+	 estate card pass
+	 adventurer card pass
+	 duchy card pass
+	 province card pass
+	 gardens card pass
+GCOV After unittest1
+File 'dominion.c'
+Lines executed:45.55% of 573
+Creating 'dominion.c.gcov'
+
+Smithy card test result
+Aseert failed: Smithy adds wrong number card for player
+Unitest for getCost
+	 curse card pass
+	 cutpurse card pass
+	 sea_hag card pass
+	 smithy card pass
+	 estate card pass
+	 adventurer card pass
+	 duchy card pass
+	 province card pass
+	 gardens card pass
+GCOV After unittest1
+File 'dominion.c'
+Lines executed:25.48% of 573
+Creating 'dominion.c.gcov'
+
+Smithy card test result
+Aseert failed: Smithy adds wrong number card for player

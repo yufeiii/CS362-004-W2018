@@ -1,0 +1,69 @@
+        -:    0:Source:unittest1.c
+        -:    0:Graph:unittest1.gcno
+        -:    0:Data:unittest1.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:#include "assert.h"
+        -:    2:#include "dominion.h"
+        -:    3:#include "dominion_helpers.h"
+        -:    4:#include <stdio.h>
+        -:    5:#include "rngs.h"
+        -:    6:#include <stdlib.h>
+        -:    7:
+        -:    8:
+        1:    9:int main(int argc, char** argv) {
+        -:   10:	struct gameState G;
+        1:   11:	int v = 0;
+        -:   12:
+        1:   13:	int k[9] = { smithy,village,  feast, outpost, adventurer, baron,tribute, cutpurse, embargo };
+        1:   14:	printf("Unitest for getCost\n");
+        -:   15:
+        1:   16:	v = initializeGame(2, k, 9, &G);
+        -:   17:
+        1:   18:	assert(v == 0);
+        1:   19:	v = getCost(curse);
+        1:   20:	if (v != 0) {
+    #####:   21:		printf("\t There is wrong at getCost for curse card \n");
+    #####:   22:		return 1;
+        -:   23:	}
+        -:   24:	else
+        1:   25:		printf("\t curse card pass\n");
+        1:   26:	v = getCost(estate);
+        1:   27:	if (v != 2) {
+    #####:   28:		printf("\t There is wrong at getCost for estate card\n");
+    #####:   29:		return 1;
+        -:   30:	}
+        -:   31:	else
+        1:   32:		printf("\t estate card pass\n");
+        1:   33:	v = getCost(adventurer);
+        1:   34:	if (v != 6) {
+    #####:   35:		printf("\tThere is wrong at getCost for adventurer card\n");
+    #####:   36:		return 1;
+        -:   37:	}
+        -:   38:	else
+        1:   39:		printf("\t adventurer card pass\n");
+        1:   40:	v = getCost(duchy);
+        1:   41:	if (v != 5) {
+    #####:   42:		printf("\tThere is wrong at getCost for duchy card\n");
+    #####:   43:		return 1;
+        -:   44:	}
+        -:   45:	else
+        1:   46:		printf("\t duchy card pass\n");
+        1:   47:	v = getCost(province);
+        1:   48:	if (v != 8) {
+    #####:   49:		printf("\tThere is wrong at getCost for province card\n");
+    #####:   50:		return 1;
+        -:   51:	}
+        -:   52:	else
+        1:   53:		printf("\t province card pass\n");
+        -:   54:
+        1:   55:	v = getCost(gardens);
+        1:   56:	if (v != 4) {
+    #####:   57:		printf("\tThere is wrong at getCost for gardens card\n");
+    #####:   58:		return 1;
+        -:   59:	}
+        -:   60:	else
+        1:   61:		printf("\t gardens card pass\n");
+        -:   62:
+        1:   63:	return 0;
+        -:   64:}

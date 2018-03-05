@@ -1,0 +1,65 @@
+        -:    0:Source:randomtestcard1.c
+        -:    0:Graph:randomtestcard1.gcno
+        -:    0:Data:randomtestcard1.gcda
+        -:    0:Runs:2
+        -:    0:Programs:1
+        -:    1:/*
+        -:    2:* Function: Random test play_village
+        -:    3:* Function: Current Player draw 1 card, +2 action
+        -:    4:* Introduce bug: Current gain 3 actions instead of 2
+        -:    5:* Output: Function output should show: test didn't pass due to the introduce bug in dominion.c
+        -:    6:*/
+        -:    7:
+        -:    8:#include "dominion.h"
+        -:    9:#include "rngs.h"
+        -:   10:#include <stdio.h>
+        -:   11:#include <math.h>
+        -:   12:#include <stdlib.h>
+        -:   13:#include <assert.h>
+        -:   14:
+        -:   15:#define RUNS 50
+        -:   16:
+        2:   17:int main() {
+        -:   18:
+        2:   19:	  int k[10] = { council_room, smithy, great_hall, ambassador, adventurer, remodel, village, feast, gardens, mine };
+        -:   20:
+        -:   21:	  int seed;
+        -:   22:	  int ps;
+        -:   23:	  int p;
+        -:   24:	  int handCount;
+        -:   25:	  int numActions; 
+        -:   26:	  int check_act;
+        -:   27:
+        -:   28:	  struct gameState g;
+        -:   29:	  int i;
+      102:   30:	  for (i = 0; i < RUNS; i++) {
+      100:   31:			ps = (rand() % 4) + 1;
+      100:   32:	 		p = rand() % ps;
+      100:   33:	 		numActions = (rand() % 25) + 1;
+        -:   34:
+      100:   35:			seed = rand();		
+      100:   36:	 		initializeGame(ps, k, seed, &g);	
+        -:   37:
+      100:   38:	 		g.deckCount[p] = rand() % MAX_DECK; 
+      100:   39:	 		g.discardCount[p] = rand() % MAX_DECK;
+      100:   40:	 		g.handCount[p] = rand() % MAX_HAND;
+      100:   41:	 		g.numPlayers = ps;
+      100:   42:	 		g.whoseTurn = p;
+      100:   43:	 		g.numActions = numActions;
+        -:   44:
+      100:   45:			handCount = g.handCount[p];
+      100:   46:			check_act = g.numActions;
+      100:   47:			cardEffect(village, 0, 0, 0, &g, 0, 0);		
+      100:   48:			check_act += 2;
+        -:   49:
+      100:   50:			if(check_act == g.numActions && handCount == g.handCount[p])
+    #####:   51:				printf("The test pass!\n");
+        -:   52:			else
+      100:   53:				printf("The test didnt pass\n");
+        -:   54:
+        -:   55:
+        -:   56:	  }
+        -:   57:
+        2:   58:	  return 0;
+        -:   59:}
+        -:   60:

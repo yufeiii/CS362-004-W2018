@@ -1,0 +1,39 @@
+        -:    0:Source:cardtest3.c
+        -:    0:Graph:cardtest3.gcno
+        -:    0:Data:cardtest3.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:#include "dominion.h"
+        -:    2:#include <stdio.h>
+        -:    3:#include <stdlib.h>
+        -:    4:
+        -:    5:
+        2:    6:int myAssert(int test, char* msg) {
+        2:    7:  if (!test) {
+        2:    8:    printf ("Aseert failed: %s\n", msg);
+        -:    9:    if (0) {
+        -:   10:      exit(1);
+        -:   11:    }
+        -:   12:  }
+        2:   13:  return 0;
+        -:   14:}
+        -:   15:
+        1:   16:int main() {
+        -:   17:
+        1:   18:  printf("Adventurer card test result\n");
+        -:   19:  struct gameState G;
+        1:   20:  int k[9] = { smithy,village,  feast, outpost, adventurer, baron,tribute, cutpurse, embargo };
+        1:   21:  initializeGame(2, k, 9, &G);
+        -:   22:
+        1:   23:  G.whoseTurn = 1;
+        1:   24:  G.hand[1][0] = adventurer;
+        1:   25:  int handCount = G.handCount[1];
+        1:   26:  int deckCount = G.deckCount[1];
+        1:   27:  int playedCount = G.playedCardCount;
+        -:   28:	
+        1:   29:  myAssert(G.handCount[1] == handCount + 1, "Adventurer did not add 2 cards for player");
+        1:   30:  myAssert(G.deckCount[1] == deckCount - 1, "Adventurer changes wrong amount cards in deck");
+        -:   31:
+        -:   32:
+        -:   33:
+        -:   34:}
