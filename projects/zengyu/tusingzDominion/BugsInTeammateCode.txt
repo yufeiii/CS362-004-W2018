@@ -1,0 +1,33 @@
+CS362-004-W2018
+Yufei Zeng
+
+Bug1:
+After running Randomtestadventurer.c for my teammate Zach’s dominion.c,
+The test didn’t pass, and, I found my teammate introduced a bug in adventurerAction in dominion.c : player draws 3 treasure card instead of 2.
+
+The code contains bug is: in adventurerAction  “while(drawntreasure<3)”
+One way to debug is: in adventurerAction  “while(drawntreasure<2)”
+
+
+Bug2:
+After running Randomtestcard1.c for my teammate Zach’s dominion.c,
+The test didn’t pass, and, I found my teammate introduced a bug in villageAction in dominion.c :Current player gain 3 actions instead of 2. So the test result is expected to no pass. 
+
+The code contains bug is: in villageAction, “state->numActions = state->numActions + 3;”
+One way to debug is: in villageAction, “state->numActions = state->numActions + 2;”
+
+
+
+Bug3:
+After running unittest2.c for my teammate Zach’s dominion.c, the test didn’t pass. There is a bug in Zach’s smithyAction: Add 9 cards to the deck instead of 3.
+
+The code contains bug is: in smithyAction, “  for (i = 0; i < 3; i++)
+  {
+    drawCard(currentPlayer, state);
+    drawCard(currentPlayer, state);
+    drawCard(currentPlayer, state);
+  }”
+One way to debug is: in smithyAction, “  for (i = 0; i < 3; i++)
+  {
+    drawCard(currentPlayer, state);
+  }”
